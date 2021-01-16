@@ -14,6 +14,18 @@ func ExampleInt() {
 	// 42
 }
 
+func ExampleIntOrNil() {
+	v := pointer.IntOrNil(42)
+	fmt.Printf("%d\n", *v)
+
+	v = pointer.IntOrNil(0)
+	fmt.Printf("%t\n", v == nil)
+
+	//Output:
+	// 42
+	// true
+}
+
 func ExampleIntValue() {
 	v := pointer.Int(42)
 	fmt.Printf("%d\n", pointer.IntValue(v))

@@ -13,3 +13,13 @@ func ExampleInt() {
 	//Output:
 	// 42
 }
+
+func ExampleIntValue() {
+	v := pointer.Int(42)
+	fmt.Printf("%d\n", pointer.IntValue(v))
+	fmt.Printf("%d\n", pointer.IntValue(nil))
+
+	//Output:
+	// 42
+	// 0
+}

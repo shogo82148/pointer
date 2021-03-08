@@ -6,10 +6,10 @@
 Pointer Utility Functions for Golang.
 The Go's specification says that the operand of the address operation `&x` must be **addressable**
 (ref. https://golang.org/ref/spec#Address_operators ).
-It means that we cat get the addresses of [constants](https://golang.org/ref/spec#Constants),
+It means that we can't get the addresses of [constants](https://golang.org/ref/spec#Constants),
 literals([Integer literals](https://golang.org/ref/spec#Integer_literals), [Floating-point literals](https://golang.org/ref/spec#Floating-point_literals),
 [String literals](https://golang.org/ref/spec#String_literals), etc.), and the return values of a function or method.
-The `pointer` packages make them addressable, and returns their pointers.
+The `pointer` package makes them addressable, and returns their pointers.
 
 ## SYNOPSIS
 

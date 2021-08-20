@@ -95,7 +95,7 @@ func TestAnyValue(t *testing.T) {
 		t.Errorf("want %d, got %d", 42, got)
 	}
 
-	got = AnyValue((int*)(nil))
+	got = AnyValue((*int)(nil))
 	if got != 0 {
 		t.Errorf("want %d, got %d", 0, got)
 	}

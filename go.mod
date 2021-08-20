@@ -1,3 +1,3 @@
 module github.com/shogo82148/pointer
 
-go 1.15
+go 1.17

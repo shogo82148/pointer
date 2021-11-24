@@ -8,94 +8,94 @@ import (
 	"time"
 )
 
-func TestAny(t *testing.T) {
-	if v := Any(42); *v != 42 {
+func TestAnyPointer(t *testing.T) {
+	if v := Pointer(42); *v != 42 {
 		t.Errorf("want %d, got %d", 42, *v)
 	}
 
-	if v := Any("foo"); *v != "foo" {
+	if v := Pointer("foo"); *v != "foo" {
 		t.Errorf("want %q, got %q", "foo", *v)
 	}
 
-	if v := Any(42.0); *v != 42.0 {
+	if v := Pointer(42.0); *v != 42.0 {
 		t.Errorf("want %f, got %f", 42.0, *v)
 	}
 
-	if v := Bool(true); *v != true {
+	if v := Pointer(true); *v != true {
 		t.Errorf("want %t, got %t", true, *v)
 	}
 
-	if v := Time(time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC)); !v.Equal(time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC)) {
+	if v := Pointer(time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC)); !v.Equal(time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC)) {
 		t.Errorf("want %s, got %s", time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC), v)
 	}
 }
-func TestAnyOrNil(t *testing.T) {
-	if v := AnyOrNil(42); *v != 42 {
+func TestAnyPointerOrNil(t *testing.T) {
+	if v := PointerOrNil(42); *v != 42 {
 		t.Errorf("want %d, got %d", 42, *v)
 	}
 
-	if v := AnyOrNil("foo"); *v != "foo" {
+	if v := PointerOrNil("foo"); *v != "foo" {
 		t.Errorf("want %q, got %q", "foo", *v)
 	}
 
-	if v := AnyOrNil(42.0); *v != 42.0 {
+	if v := PointerOrNil(42.0); *v != 42.0 {
 		t.Errorf("want %f, got %f", 42.0, *v)
 	}
 
-	if v := AnyOrNil(true); *v != true {
+	if v := PointerOrNil(true); *v != true {
 		t.Errorf("want %t, got %t", true, *v)
 	}
 
-	if v := AnyOrNil(time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC)); !v.Equal(time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC)) {
+	if v := PointerOrNil(time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC)); !v.Equal(time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC)) {
 		t.Errorf("want %s, got %s", time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC), v)
 	}
 
-	if v := AnyOrNil(0); v != nil {
+	if v := PointerOrNil(0); v != nil {
 		t.Errorf("want nil, got %p", v)
 	}
 
-	if v := AnyOrNil(""); v != nil {
+	if v := PointerOrNil(""); v != nil {
 		t.Errorf("want nil, got %p", v)
 	}
 
-	if v := AnyOrNil(0.0); v != nil {
+	if v := PointerOrNil(0.0); v != nil {
 		t.Errorf("want nil, got %p", v)
 	}
 
-	if v := AnyOrNil(false); v != nil {
+	if v := PointerOrNil(false); v != nil {
 		t.Errorf("want nil, got %p", v)
 	}
 
-	if v := TimeOrNil(time.Time{}); v != nil {
+	if v := PointerOrNil(time.Time{}); v != nil {
 		t.Errorf("want nil, got %p", v)
 	}
 }
 
-func TestAnyValueWithDefault(t *testing.T) {
+func TestValueWithDefault(t *testing.T) {
 	var v int = 42
 	var got int
 
-	got = AnyValueWithDefault(&v, 0)
+	got = ValueWithDefault(&v, 0)
 	if got != 42 {
 		t.Errorf("want %d, got %d", 42, got)
 	}
 
-	got = AnyValueWithDefault(nil, 42)
+	got = ValueWithDefault(nil, 42)
 	if got != 42 {
 		t.Errorf("want %d, got %d", 42, got)
 	}
 }
 
-func TestAnyValue(t *testing.T) {
+func TestValue(t *testing.T) {
 	var v int = 42
 	var got int
 
-	got = AnyValue(&v)
+	got = Value(&v)
 	if got != 42 {
 		t.Errorf("want %d, got %d", 42, got)
 	}
 
-	got = AnyValue((*int)(nil))
+	got = Value((*int)(nil))
 	if got != 0 {
 		t.Errorf("want %d, got %d", 0, got)
 	}

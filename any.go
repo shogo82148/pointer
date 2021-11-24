@@ -9,7 +9,7 @@ func Any[T any](v T) *T {
 }
 
 // AnyOrNil is like Any but returns nil if v is the zero value.
-func AnyOrNil[T any](v T) *T {
+func AnyOrNil[T comparable](v T) *T {
 	var zero T
 	if v == zero {
 		return nil

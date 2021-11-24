@@ -38,7 +38,7 @@ func TestAnyOrNil(t *testing.T) {
 		t.Errorf("want %q, got %q", "foo", *v)
 	}
 
-	if v := Any32OrNil(42.0); *v != 42.0 {
+	if v := AnyOrNil(42.0); *v != 42.0 {
 		t.Errorf("want %f, got %f", 42.0, *v)
 	}
 
@@ -90,7 +90,7 @@ func TestAnyValue(t *testing.T) {
 	var v int = 42
 	var got int
 
-	got = IntValue(&v)
+	got = AnyValue(&v)
 	if got != 42 {
 		t.Errorf("want %d, got %d", 42, got)
 	}

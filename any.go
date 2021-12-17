@@ -3,13 +3,13 @@
 
 package pointer
 
-// Pointer returns a pointer whose value is v.
-func Pointer[T any](v T) *T {
+// Ptr returns a pointer whose value is v.
+func Ptr[T any](v T) *T {
 	return &v
 }
 
-// PointerOrNil is like Any but returns nil if v is the zero value.
-func PointerOrNil[T comparable](v T) *T {
+// PtrOrNil is like Any but returns nil if v is the zero value.
+func PtrOrNil[T comparable](v T) *T {
 	var zero T
 	if v == zero {
 		return nil

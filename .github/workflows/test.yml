@@ -12,13 +12,14 @@ jobs:
       fail-fast: false
       matrix:
         go:
-          # - "1.18"
+          - "1.18.0-beta1"
           - "1.17"
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
         with:
           go-version: "${{ matrix.go }}"
+          stable: ${{ !contains(matrix.go, 'beta') }}
       - run: go test -v -coverprofile=profile.cov ./...
       - uses: shogo82148/actions-goveralls@v1
         with:

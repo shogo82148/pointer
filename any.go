@@ -33,3 +33,13 @@ func Value[T any](p *T) T {
 	}
 	return *p
 }
+
+// Equal returns *a == *b but it also accpets nil pointers.
+// Special cases are:
+//
+//     Equal(nil, nil) = true
+//     Equal(nil, &v) = false
+//     Equal(&v, nil) = false
+func Equal[T comparable](a, b *T) bool {
+	return a == b || (a != nil && b != nil && *a == *b)
+}

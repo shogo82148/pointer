@@ -40,3 +40,19 @@ func ExampleValue() {
 	// 42
 	// 0
 }
+
+func ExampleEqual() {
+	// a and b have the same look.
+	a := pointer.Ptr(42)
+	b := pointer.Ptr(42)
+
+	// But it reports false because a and b have differrent addresses.
+	fmt.Printf("a == b: %t\n", a == b)
+
+	// Equal returns true.
+	fmt.Printf("pointer.Equal(a, b): %t\n", pointer.Equal(a, b))
+
+	//Output:
+	// a == b: false
+	// pointer.Equal(a, b): true
+}

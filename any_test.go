@@ -100,3 +100,35 @@ func TestValue(t *testing.T) {
 		t.Errorf("want %d, got %d", 0, got)
 	}
 }
+
+func TestEqual(t *testing.T) {
+	var v int
+
+	// a == b
+	if !Equal(&v, &v) {
+		t.Error("Equal(&v, &v) should be true, got false")
+	}
+
+	// a != b but *a == *b
+	if !Equal(&v, Ptr(0)) {
+		t.Error("should be true, got false")
+	}
+
+	a := [...]int{1, 2, 3}
+	b := [...]int{1, 2, 3}
+	if !Equal(&a, &b) {
+		t.Error("should be true, got false")
+	}
+
+	if Equal(nil, &v) {
+		t.Error("Equal(nil, &v) should be false, got true")
+	}
+
+	if Equal(&v, nil) {
+		t.Error("Equal(&v, nil) should be false, got true")
+	}
+
+	if !Equal((*int)(nil), (*int)(nil)) {
+		t.Error("Equal((*int)(nil), (*int)(nil)) should be true, got false")
+	}
+}

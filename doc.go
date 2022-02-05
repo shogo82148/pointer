@@ -1,11 +1,11 @@
 /*
 Package pointer provides pointer utility functions.
 
-The Go's specification says that the operand of the address operation `&x` must be addressable
+The Go's specification says that the operand of the address operation &x must be addressable
 (ref. https://golang.org/ref/spec#Address_operators ).
 It means that we cat get the addresses of constants, literals(Integer literals, Floating-point literals,
 String literals, etc.), and the return values of a function or method.
-The `pointer` packages make them addressable, and returns their pointers.
+The pointer packages make them addressable, and returns their pointers.
 
 	import "github.com/shogo82148/pointer"
 
@@ -44,6 +44,12 @@ The `pointer` packages make them addressable, and returns their pointers.
 
 		// StringValueWithDefault returns the default value if p is nil
 		fmt.Printf("%s\n", pointer.StringValueWithDefault(stuff.Name, "John"))
+
+		// From Go 1.18, generics functions are supported.
+		stuff.Value = pointer.Ptr(int64(42)) // same as pointer.Int64
+		stuff.Value = pointer.PtrOrNil(int64(0)) // same as pointer.Int64OrNil
+		fmt.Printf("%s\n", pointer.Value(stuff.Name)) // same as pointer.StringValue
+		fmt.Printf("%s\n", pointer.ValueWithDefault(stuff.Name, "John")) // same as pointer.StringValueWithDefault
 	}
 
 */

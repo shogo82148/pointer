@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: "${{ matrix.go }}"
-          stable: ${{ !contains(matrix.go, 'beta') }}
+          stable: "false"
       - run: go test -v -coverprofile=profile.cov ./...
       - uses: shogo82148/actions-goveralls@v1
         with:

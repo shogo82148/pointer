@@ -132,3 +132,30 @@ func TestEqual(t *testing.T) {
 		t.Error("Equal((*int)(nil), (*int)(nil)) should be true, got false")
 	}
 }
+
+func TestShallowCopy(t *testing.T) {
+	v := &struct {
+		Foo int
+		Bar int
+	}{42, 46}
+	u := ShallowCopy(v)
+
+	if u == v {
+		t.Errorf("should not equal u and v: u = %p, v = %p", u, v)
+	}
+	if !Equal(u, v) {
+		t.Errorf("*u and *v should be same value, but u = %#v, v = %#v", u, v)
+	}
+
+	v.Foo++
+	if u.Foo != 42 {
+		t.Errorf("u should not be changed, but u.Foo is %d", u.Foo)
+	}
+
+	// in case of nil pointer
+	v = nil
+	u = ShallowCopy(v)
+	if u != nil {
+		t.Errorf("want nil pointer, got %p", u)
+	}
+}

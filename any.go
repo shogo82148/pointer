@@ -43,3 +43,13 @@ func Value[T any](p *T) T {
 func Equal[T comparable](a, b *T) bool {
 	return a == b || (a != nil && b != nil && *a == *b)
 }
+
+// ShallowCopy returns a shallow copy of v.
+// If v is nil, it returns a nil pointer.
+func ShallowCopy[T any](v *T) *T {
+	if v == nil {
+		return nil
+	}
+	u := *v
+	return &u
+}

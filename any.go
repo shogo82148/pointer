@@ -34,7 +34,7 @@ func Value[T any](p *T) T {
 	return *p
 }
 
-// Equal returns *a == *b but it also accpets nil pointers.
+// Equal returns *a == *b but it also accepts nil pointers.
 // Special cases are:
 //
 //     Equal(nil, nil) = true

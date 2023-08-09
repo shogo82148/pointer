@@ -259,3 +259,35 @@ func TestTimeValueWithDefault(t *testing.T) {
 		t.Errorf("want %s, got %s", v, got)
 	}
 }
+
+func TestComplex64ValueWithDefault(t *testing.T) {
+	var v complex64 = complex(1, 2)
+	var def complex64 = complex(3, 4)
+	var got complex64
+
+	got = Complex64ValueWithDefault(&v, def)
+	if got != v {
+		t.Errorf("want %v, got %v", v, got)
+	}
+
+	got = Complex64ValueWithDefault(nil, def)
+	if got != def {
+		t.Errorf("want %v, got %v", def, got)
+	}
+}
+
+func TestComplex128ValueWithDefault(t *testing.T) {
+	var v complex128 = complex(1, 2)
+	var def complex128 = complex(3, 4)
+	var got complex128
+
+	got = Complex128ValueWithDefault(&v, def)
+	if got != v {
+		t.Errorf("want %v, got %v", v, got)
+	}
+
+	got = Complex128ValueWithDefault(nil, def)
+	if got != def {
+		t.Errorf("want %v, got %v", def, got)
+	}
+}

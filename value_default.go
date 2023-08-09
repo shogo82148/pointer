@@ -137,3 +137,19 @@ func TimeValueWithDefault(p *time.Time, def time.Time) time.Time {
 	}
 	return *p
 }
+
+// Complex64ValueWithDefault is like *p but it returns def if p is nil.
+func Complex64ValueWithDefault(p *complex64, def complex64) complex64 {
+	if p == nil {
+		return def
+	}
+	return *p
+}
+
+// Complex128ValueWithDefault is like *p but it returns def if p is nil.
+func Complex128ValueWithDefault(p *complex128, def complex128) complex128 {
+	if p == nil {
+		return def
+	}
+	return *p
+}

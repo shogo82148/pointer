@@ -73,4 +73,12 @@ func TestPointer(t *testing.T) {
 	if v := Time(time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC)); !v.Equal(time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC)) {
 		t.Errorf("want %s, got %s", time.Date(2020, time.January, 17, 2, 19, 0, 0, time.UTC), v)
 	}
+
+	if v := Complex64(1 + 2i); *v != 1+2i {
+		t.Errorf("want %f, got %f", 1+2i, *v)
+	}
+
+	if v := Complex128(1 + 2i); *v != 1+2i {
+		t.Errorf("want %f, got %f", 1+2i, *v)
+	}
 }

@@ -259,3 +259,33 @@ func TestTimeValue(t *testing.T) {
 		t.Errorf("want %s, got %s", time.Time{}, got)
 	}
 }
+
+func TestComplex64Value(t *testing.T) {
+	var v complex64 = 4 + 2i
+	var got complex64
+
+	got = Complex64Value(&v)
+	if got != 4+2i {
+		t.Errorf("want %f, got %f", 4+2i, got)
+	}
+
+	got = Complex64Value(nil)
+	if got != 0 {
+		t.Errorf("want %f, got %f", 4+2i, got)
+	}
+}
+
+func TestComplex128Value(t *testing.T) {
+	var v complex128 = 4 + 2i
+	var got complex128
+
+	got = Complex128Value(&v)
+	if got != 4+2i {
+		t.Errorf("want %f, got %f", 4+2i, got)
+	}
+
+	got = Complex128Value(nil)
+	if got != 0 {
+		t.Errorf("want %f, got %f", 4+2i, got)
+	}
+}

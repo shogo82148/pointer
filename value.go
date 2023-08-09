@@ -137,3 +137,19 @@ func TimeValue(p *time.Time) time.Time {
 	}
 	return *p
 }
+
+// Complex64Value is like *p but it returns 0 if p is nil.
+func Complex64Value(p *complex64) complex64 {
+	if p == nil {
+		return 0
+	}
+	return *p
+}
+
+// Complex128Value is like *p but it returns 0 if p is nil.
+func Complex128Value(p *complex128) complex128 {
+	if p == nil {
+		return 0
+	}
+	return *p
+}

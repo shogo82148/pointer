@@ -86,3 +86,13 @@ func Rune(v rune) *rune {
 func Time(v time.Time) *time.Time {
 	return &v
 }
+
+// Complex64 returns a pointer to a complex64 whose value is v.
+func Complex64(v complex64) *complex64 {
+	return &v
+}
+
+// Complex128 returns a pointer to a complex128 whose value is v.
+func Complex128(v complex128) *complex128 {
+	return &v
+}

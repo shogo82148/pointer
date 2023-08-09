@@ -51,6 +51,5 @@ The pointer packages make them addressable, and returns their pointers.
 		fmt.Printf("%s\n", pointer.Value(stuff.Name)) // same as pointer.StringValue
 		fmt.Printf("%s\n", pointer.ValueWithDefault(stuff.Name, "John")) // same as pointer.StringValueWithDefault
 	}
-
 */
 package pointer

@@ -10,8 +10,7 @@ func Ptr[T any](v T) *T {
 
 // PtrOrNil is like Any but returns nil if v is the zero value.
 func PtrOrNil[T comparable](v T) *T {
-	var zero T
-	if v == zero {
+	if v == Zero[T]() {
 		return nil
 	}
 	return &v
@@ -28,8 +27,7 @@ func ValueWithDefault[T any](p *T, def T) T {
 // Value is like *p but it returns the zero value if p is nil.
 func Value[T any](p *T) T {
 	if p == nil {
-		var zero T
-		return zero
+		return Zero[T]()
 	}
 	return *p
 }
@@ -37,9 +35,9 @@ func Value[T any](p *T) T {
 // Equal returns *a == *b but it also accepts nil pointers.
 // Special cases are:
 //
-//     Equal(nil, nil) = true
-//     Equal(nil, &v) = false
-//     Equal(&v, nil) = false
+//	Equal(nil, nil) = true
+//	Equal(nil, &v) = false
+//	Equal(&v, nil) = false
 func Equal[T comparable](a, b *T) bool {
 	return a == b || (a != nil && b != nil && *a == *b)
 }
@@ -52,4 +50,10 @@ func ShallowCopy[T any](v *T) *T {
 	}
 	u := *v
 	return &u
+}
+
+// Zero returns the zero value of type T.
+func Zero[T any]() T {
+	var zero T
+	return zero
 }

@@ -19,7 +19,7 @@ jobs:
           - "1.17"
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
           go-version: "${{ matrix.go }}"
       - run: go test -v -coverprofile=profile.cov ./...

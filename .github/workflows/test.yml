@@ -26,6 +26,8 @@ jobs:
         with:
           go-version: "${{ matrix.go }}"
       - run: go test -v -coverprofile=profile.cov ./...
-      - uses: shogo82148/actions-goveralls@25f5320d970fb565100cf1993ada29be1bb196a1 # v1.10.0
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
         with:
-          path-to-profile: profile.cov
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: shogo82148/pointer

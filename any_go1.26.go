@@ -1,11 +1,15 @@
-//go:build go1.18 && !go1.26
-// +build go1.18,!go1.26
+//go:build go1.26
+// +build go1.26
 
 package pointer
 
 // Ptr returns a pointer whose value is v.
+//
+// Deprecated: Use new(v) instead.
+//
+//go:fix inline
 func Ptr[T any](v T) *T {
-	return &v
+	return new(v)
 }
 
 // PtrOrNil is like Any but returns nil if v is the zero value.

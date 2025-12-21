@@ -104,7 +104,7 @@ func String(v string) *string {
 	return new(v)
 }
 
-// Float32 returns a pointer to a string whose value is v.
+// Float32 returns a pointer to a float32 whose value is v.
 //
 // Deprecated: Use new(v) instead.
 //
@@ -113,7 +113,7 @@ func Float32(v float32) *float32 {
 	return new(v)
 }
 
-// Float64 returns a pointer to a string whose value is v.
+// Float64 returns a pointer to a float64 whose value is v.
 //
 // Deprecated: Use new(v) instead.
 //
@@ -122,7 +122,7 @@ func Float64(v float64) *float64 {
 	return new(v)
 }
 
-// Bool returns a pointer to a string whose value is v.
+// Bool returns a pointer to an bool whose value is v.
 //
 // Deprecated: Use new(v) instead.
 //

@@ -60,6 +60,33 @@ func main() {
 }
 ```
 
+## UPDATE! new(expr) FROM Go 1.26
+
+Starting with Go 1.26, you can use `new(expr)` for this purpose.
+
+```go
+type Stuff struct {
+    Name    *string
+    Comment *string
+    Value   *int64
+    Time    *time.Time
+}
+
+func main() {
+    const defaultName = "some name"
+
+    // convert to pointers
+    stuff := &Stuff{
+        Name:    new(defaultName),
+        Comment: new("not yet"),
+        Value:   new(42),
+        Time:    new(time.Date(2014, 6, 25, 12, 24, 40, 0, time.UTC)),
+    }
+}
+```
+
+I recommend you to use `new(expr)` instead of the pointer package.
+
 ## RELATED WORKS
 
 - https://github.com/AlekSi/pointer
